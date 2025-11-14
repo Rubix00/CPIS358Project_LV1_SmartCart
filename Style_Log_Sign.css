@@ -1,0 +1,26 @@
+
+    .Spage{
+     background-color: white;
+     border-radius: 20px;
+     height: 600px;
+     width: 300px;
+     margin-top:10%;
+     margin-left: 37%;
+     padding: 70px;
+     color: green;
+    text-align: center;
+
+    }
+    .ftext{font-family: sans-serif; padding-right: 13px; font-weight: bold;}
+   
+    label {color: black; font-weight: bold;  margin-top: 30px  ;}
+
+    input{border-radius: 20px; width: 300px;
+      margin-top: 8px; margin-bottom: 25px;
+      border-color: lightgray;
+    
+    }
+
+    form{text-align: left; margin-top: 20px; margin-right: 20px;}
+    button{width: 150px; height:40px ; text-align: center; background-color: rgb(69, 167, 69); color: white; margin-top: 15px; margin-left: 70px;
+       border-radius: 20px;  }
