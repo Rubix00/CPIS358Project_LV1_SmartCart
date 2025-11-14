@@ -39,11 +39,13 @@
             background-color: white;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             padding: 50px;
-            width: 90%;
+            width: auto;
             margin-left: 30px;
+            margin-right: 30px;
             margin-top: 30px;
+            margin-bottom: 10px;
             border-radius: 20px;
-            height: 200px;
+            height: auto;
             border-right: black;
         }
 
@@ -111,7 +113,7 @@
         <p style="font-size: 25px; font-family: sans-serif;">Add item by barcode</p>
 
         <form action="">
-            <input type="text" placeholder="  Enter barcode here "
+            <input  required type="text"  placeholder="  Enter barcode here " 
                 style="width:50%; margin-left: 40px; border-radius: 20px; height: 24px; border-color: gray;"
                 id="barcode">
             <button type="button" onclick="additem()">Add</button>
@@ -149,6 +151,7 @@
 
 <script>
     let total = 0;
+    let barcode = null
     function additem() {
         let barcode = document.getElementById("barcode").value;
         let div_C = document.querySelector(".cart");
@@ -164,7 +167,9 @@
             itemName = "Bread";
             itemPrice = 1;
         }
-        else { alert("invalid inout"); }
+        else if  ( barcode == null ) {
+
+             }
 
         total += itemPrice;
 
