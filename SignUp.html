@@ -20,6 +20,16 @@
       font-family: sans-serif;
 
     }
+
+
+     .maping{
+      width: 100px;
+         height: auto;
+       margin-right: 80%;
+   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+
+    }
   </style>
 
 </head>
@@ -40,14 +50,28 @@
       </nav>
     </section>
   </header>
-  <section>
+
+ <nav style="padding: 0px; text-align: center;">
+    <a 
+      href="./AboutUs.html">
+     
+      <img src="./Images/32dabdb83c4fe1be1929f52bb8e328a4.jpg" class="maping" alt="">
+     
+      </a> <p style=" color: #0ea84d; font-family: 'Times New Roman', Times, serif; font-size:  20px ; margin-right: 75%;"><u> Click image to learn more about us!</u></p>
+       
+  </nav>
+
+
+
+
+  <section style="margin-bottom: 60%;">
 
     <div class="Spage">
       <h2> Join us in SmartCart </h2>
       <p class="ftext">Create an Account to experince fast <span style="color: green;">Shopping!</span></p><br><br>
 
 
-      <form action="./Home.html">
+      <form action="./Home.html" onsubmit="return validate()">
         <label for="name"> Full Name: </label>
         <input style="text-align: center;" type="text" placeholder="Enter your Name here" required id="name"><br><br>
 
@@ -58,7 +82,7 @@
         <input style="text-align: center;" type="password" placeholder="*******" required id="password"><br><br>
 
         <label for="confirm">Confirm Password: </label>
-        <input style="text-align: center;" type="password" placeholder="Re-Enter your passwrod " requiredid="confirm"><br><br>
+        <input style="text-align: center;" type="password" placeholder="Re-Enter your passwrod " required id="confirm"><br><br>
 
         <label for="username">Username: </label>
         <input style="text-align: center;" type="text" placeholder="Enter your username" required id="username"><br><br>
@@ -79,5 +103,34 @@
 
 
 </body>
+<!-- validate form using script-->>
+<script>
+function validate(){
+let username = document.getElementById("username").value
+let password = document.getElementById("password").value
+let con = document.getElementById("confirm").value
 
+
+if (password.length<6){
+  alert("Password must be at least 6")
+  return false ; 
+
+}
+
+if (password !== con){
+  alert("passwrod do not match")
+  return false; 
+}
+
+if (username.length<5){
+  alert("username must be at leat 5")
+  return false ;
+}
+
+
+}
+
+
+
+</script>
 </html>
