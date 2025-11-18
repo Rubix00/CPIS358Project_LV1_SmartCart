@@ -1,50 +1,69 @@
 let total = 0;
-    let barcode = null
-    function additem() {
-        let barcode = document.getElementById("barcode").value;
-        let div_C = document.querySelector(".cart");
 
-        let itemName = "";
-        let itemPrice = 0;
+var itemsMap = {
+    "111": { name: "Milk", price: 2 },
+    "222": { name: "Bread", price: 1 }
+};
 
-        if (barcode == "111") {
-            itemName = "Milk";
-            itemPrice = 2;
-        }
-        else if (barcode == "222") {
-            itemName = "Bread";
-            itemPrice = 1;
-        }
-        else if (barcode == null) {
+function additem() {
+    var barcode = document.getElementById("barcode").value;
+    var div_C = document.querySelector(".cart");
 
-        }
-
-        total += itemPrice;
-
-
-
-
-
-        let itemdiv = document.createElement("div");
-
-        itemdiv.innerHTML = ` <p>  ${itemName} -  ${itemPrice} SAR 
-    
-    <button onclick="removeItem(this , ${itemPrice})"> Remove </button> </p>
-    `;
-        div_C.appendChild(itemdiv);
-
-        let totalbox = document.getElementById("totalBox")
-        totalbox.innerHTML = "<strong> Total: " + total + " SAR </strong>"
-
-        document.getElementById("barcode").value = ""
+    var item = itemsMap[barcode];
+    if (!item) {
+        alert("No item found for barcode: " + barcode);
+        return;
     }
 
+    total += item.price;
 
+    var itemdiv = document.createElement("div");
+    itemdiv.innerHTML = `
+            <p>${item.name} - ${item.price} SAR 
+            <button onclick="removeItem(this, ${item.price})">Remove</button></p>
+        `;
+    div_C.appendChild(itemdiv);
 
-    function removeItem(button, price) {
-        button.parentElement.remove();
-        total = total - price;
+    var totalbox = document.getElementById("totalBox");
+    totalbox.innerHTML = "<strong>Total: " + total + " SAR</strong>";
 
-        let totalbox = document.getElementById("totalBox")
-        totalbox.innerHTML = "<strong> Total: " + total + " SAR </strong>"
+    document.getElementById("barcode").value = "";
+}
+
+function removeItem(button, price) {
+    button.parentElement.remove();
+    total -= price;
+
+    var totalbox = document.getElementById("totalBox");
+    totalbox.innerHTML = "<strong>Total: " + total + " SAR</strong>";
+}
+
+function addItemToList() {
+    var name = prompt("Enter item name:");
+    if (!name) return;
+
+    var barcode = prompt("Enter item barcode (numbers only):");
+    if (!barcode || isNaN(barcode)) {
+        alert("Invalid barcode. Please enter numbers only.");
+        return;
     }
+
+    var price = prompt("Enter item price (numbers only):");
+    if (!price || isNaN(price)) {
+        alert("Invalid price. Please enter numbers only.");
+        return;
+    }
+
+    itemsMap[barcode] = { name: name, price: Number(price) };
+
+
+    var div = document.createElement("div");
+    div.className = "itemsdis";
+    div.innerHTML = `
+            <label><u>${name}</u></label>
+            <fieldset class="barcode">Barcode: ${barcode}</fieldset>
+            <p>Price: ${price} SAR</p>
+        `;
+
+    document.getElementById("items").appendChild(div);
+}

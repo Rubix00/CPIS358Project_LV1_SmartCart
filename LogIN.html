@@ -17,17 +17,10 @@
          padding: 20px;
          padding-left: 0px;
          margin: 0 auto;
-         margin-top: 4%;
+         margin-top: 15%;
          color: black;
          text-align: center;
          font-family: sans-serif;
-      }
-
-
-        .mapping_Log{
-         width: 100px;
-         height: auto;
-       margin-right: 80%;
       }
    </style>
 
@@ -42,24 +35,18 @@
          <p><strong>SmartCart</strong></p>
          <img src="./Images/3b83549957d066febff448c3aa2a7510.jpg" alt="">
 
-         <nav class="navigation">
-            <a href="./Home.html">Home</a>
-            <a href="./Demo.html">Demo</a>
-            <a href="./Howitwork.html">How the demo works </a>
-            <a href="./LogIN.html"> Log in</a>
-            <a href="./SignUp.html">Sign up</a>
-            <a href="./AboutUs.html">About us </a>
-         </nav>
+       <nav class="navigation">
+                <a href="./Home.html">Home</a>
+                <a href="./Demo.html">Demo</a>
+                <a href="./Howitwork.html">How the demo works </a>
+                <a href="./AboutUs.html">About us </a>
+                <a href="./LogIN.html"><b><u>Log in</u></b></a>
+                <a href="./SignUp.html">Sign up</a>
+                
+            </nav>
       </section>
    </header>
- <nav style="padding: 50px; text-align: center;">
-    <a 
-      href="./AboutUs.html"> 
-      
-      <img src="./Images/32dabdb83c4fe1be1929f52bb8e328a4.jpg" class="mapping_Log" alt="">
-      
-     </a>   <p style=" color: #0ea84d; font-family: 'Times New Roman', Times, serif; font-size:  20px ; margin-right: 75%;"><u> Click image to learn more about us!</u></p>
-  </nav>
+
    <div class="Lpage">
       <h2> Log in </h2> <br>
 
@@ -88,7 +75,38 @@
    </div>
 
 
+<script>
+    document.getElementById("signupForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // stop refresh
 
+      var password = document.getElementById("password").value;
+      var confirmPassword = document.getElementById("confirmPassword").value;
+
+      // Reset errors
+      document.getElementById("passwordError").innerText = "";
+      document.getElementById("confirmError").innerText = "";
+
+      var valid = true;
+
+      // Password validation: >6 chars and at least one uppercase
+      if (password.length <= 6 || !/[A-Z]/.test(password)) {
+        document.getElementById("passwordError").innerText =
+          "Password must be more than 6 characters and contain at least one capital letter.";
+        valid = false;
+      }
+
+      // Confirm password
+      if (confirmPassword !== password) {
+        document.getElementById("confirmError").innerText = "Passwords do not match.";
+        valid = false;
+      }
+
+      if (valid) {
+        alert("Signup successful!");
+        // Here you would normally send data to server
+      }
+    });
+    </script>
 </body>
 
 

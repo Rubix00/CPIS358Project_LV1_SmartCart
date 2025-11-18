@@ -20,16 +20,6 @@
       font-family: sans-serif;
 
     }
-
-
-     .maping{
-      width: 100px;
-         height: auto;
-       margin-right: 80%;
-   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-
-
-    }
   </style>
 
 </head>
@@ -40,38 +30,25 @@
       <p><strong>SmartCart</strong></p>
       <img src="./Images/3b83549957d066febff448c3aa2a7510.jpg" alt="">
 
-      <nav class="navigation">
-        <a href="./Home.html">Home</a>
-        <a href="./Demo.html">Demo</a>
-        <a href="./Howitwork.html">How the demo works </a>
-        <a href="./LogIN.html"> Log in</a>
-        <a href="./SignUp.html">Sign up</a>
-        <a href="./AboutUs.html">About us </a>
-      </nav>
+     <nav class="navigation">
+                <a href="./Home.html">Home</a>
+                <a href="./Demo.html">Demo</a>
+                <a href="./Howitwork.html">How the demo works </a>
+                <a href="./AboutUs.html">About us </a>
+                <a href="./LogIN.html"> Log in</a>
+                <a href="./SignUp.html"><b><u>Sign up</u></b></a>
+                
+            </nav>
     </section>
   </header>
-
- <nav style="padding: 0px; text-align: center;">
-    <a 
-      href="./AboutUs.html">
-     
-      <img src="./Images/32dabdb83c4fe1be1929f52bb8e328a4.jpg" class="maping" alt="">
-     
-      </a> <p style=" color: #0ea84d; font-family: 'Times New Roman', Times, serif; font-size:  20px ; margin-right: 75%;"><u> Click image to learn more about us!</u></p>
-       
-  </nav>
-
-
-
-
-  <section style="margin-bottom: 60%;">
+  <section>
 
     <div class="Spage">
       <h2> Join us in SmartCart </h2>
       <p class="ftext">Create an Account to experince fast <span style="color: green;">Shopping!</span></p><br><br>
 
 
-      <form action="./Home.html" onsubmit="return validate()">
+      <form action="./Home.html">
         <label for="name"> Full Name: </label>
         <input style="text-align: center;" type="text" placeholder="Enter your Name here" required id="name"><br><br>
 
@@ -82,7 +59,7 @@
         <input style="text-align: center;" type="password" placeholder="*******" required id="password"><br><br>
 
         <label for="confirm">Confirm Password: </label>
-        <input style="text-align: center;" type="password" placeholder="Re-Enter your passwrod " required id="confirm"><br><br>
+        <input style="text-align: center;" type="password" placeholder="Re-Enter your passwrod " requiredid="confirm"><br><br>
 
         <label for="username">Username: </label>
         <input style="text-align: center;" type="text" placeholder="Enter your username" required id="username"><br><br>
@@ -101,36 +78,38 @@
 
   </section>
 
-
-</body>
-<!-- validate form using script-->>
 <script>
-function validate(){
-let username = document.getElementById("username").value
-let password = document.getElementById("password").value
-let con = document.getElementById("confirm").value
+    document.getElementById("signupForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      var password = document.getElementById("password").value;
+      var confirmPassword = document.getElementById("confirmPassword").value;
+
+ 
+      document.getElementById("passwordError").innerText = "";
+      document.getElementById("confirmError").innerText = "";
+
+      var valid = true;
+
+      
+      if (password.length <= 6 || !/[A-Z]/.test(password)) {
+        document.getElementById("passwordError").innerText =
+          "Password must be more than 6 characters and contain at least one capital letter.";
+        valid = false;
+      }
 
 
-if (password.length<6){
-  alert("Password must be at least 6")
-  return false ; 
+      if (confirmPassword !== password) {
+        document.getElementById("confirmError").innerText = "Passwords do not match.";
+        valid = false;
+      }
 
-}
+      if (valid) {
+        alert("Signup successful!");
+ 
+      }
+    });
+    </script>
+</body>
 
-if (password !== con){
-  alert("passwrod do not match")
-  return false; 
-}
-
-if (username.length<5){
-  alert("username must be at leat 5")
-  return false ;
-}
-
-
-}
-
-
-
-</script>
 </html>
