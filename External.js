@@ -37,33 +37,3 @@ function removeItem(button, price) {
     var totalbox = document.getElementById("totalBox");
     totalbox.innerHTML = "<strong>Total: " + total + " SAR</strong>";
 }
-
-function addItemToList() {
-    var name = prompt("Enter item name:");
-    if (!name) return;
-
-    var barcode = prompt("Enter item barcode (numbers only):");
-    if (!barcode || isNaN(barcode)) {
-        alert("Invalid barcode. Please enter numbers only.");
-        return;
-    }
-
-    var price = prompt("Enter item price (numbers only):");
-    if (!price || isNaN(price)) {
-        alert("Invalid price. Please enter numbers only.");
-        return;
-    }
-
-    itemsMap[barcode] = { name: name, price: Number(price) };
-
-
-    var div = document.createElement("div");
-    div.className = "itemsdis";
-    div.innerHTML = `
-            <label><u>${name}</u></label>
-            <fieldset class="barcode">Barcode: ${barcode}</fieldset>
-            <p>Price: ${price} SAR</p>
-        `;
-
-    document.getElementById("items").appendChild(div);
-}
