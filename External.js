@@ -1,39 +1,50 @@
 let total = 0;
+    let barcode = null
+    function additem() {
+        let barcode = document.getElementById("barcode").value;
+        let div_C = document.querySelector(".cart");
 
-var itemsMap = {
-    "111": { name: "Milk", price: 2 },
-    "222": { name: "Bread", price: 1 }
-};
+        let itemName = "";
+        let itemPrice = 0;
 
-function additem() {
-    var barcode = document.getElementById("barcode").value;
-    var div_C = document.querySelector(".cart");
+        if (barcode == "111") {
+            itemName = "Milk";
+            itemPrice = 2;
+        }
+        else if (barcode == "222") {
+            itemName = "Bread";
+            itemPrice = 1;
+        }
+        else if (barcode == null) {
 
-    var item = itemsMap[barcode];
-    if (!item) {
-        alert("No item found for barcode: " + barcode);
-        return;
+        }
+
+        total += itemPrice;
+
+
+
+
+
+        let itemdiv = document.createElement("div");
+
+        itemdiv.innerHTML = ` <p>  ${itemName} -  ${itemPrice} SAR 
+    
+    <button onclick="removeItem(this , ${itemPrice})"> Remove </button> </p>
+    `;
+        div_C.appendChild(itemdiv);
+
+        let totalbox = document.getElementById("totalBox")
+        totalbox.innerHTML = "<strong> Total: " + total + " SAR </strong>"
+
+        document.getElementById("barcode").value = ""
     }
 
-    total += item.price;
 
-    var itemdiv = document.createElement("div");
-    itemdiv.innerHTML = `
-            <p>${item.name} - ${item.price} SAR 
-            <button onclick="removeItem(this, ${item.price})">Remove</button></p>
-        `;
-    div_C.appendChild(itemdiv);
 
-    var totalbox = document.getElementById("totalBox");
-    totalbox.innerHTML = "<strong>Total: " + total + " SAR</strong>";
+    function removeItem(button, price) {
+        button.parentElement.remove();
+        total = total - price;
 
-    document.getElementById("barcode").value = "";
-}
-
-function removeItem(button, price) {
-    button.parentElement.remove();
-    total -= price;
-
-    var totalbox = document.getElementById("totalBox");
-    totalbox.innerHTML = "<strong>Total: " + total + " SAR</strong>";
-}
+        let totalbox = document.getElementById("totalBox")
+        totalbox.innerHTML = "<strong> Total: " + total + " SAR </strong>"
+    }
